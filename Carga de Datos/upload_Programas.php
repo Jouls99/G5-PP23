@@ -40,8 +40,24 @@ include "consultas.php";
           <li><a href="../index.php">Inicio</a></li>
           <li><a href="https://exa.unne.edu.ar/r/">FaCENA</a></li>
 
-          <li><a href="../cuenta/login.html">Administracion</a></li>
-      </ul>
+          <?php
+            // session_start();
+            error_reporting(0);
+            $varsession = $_SESSION ['username'];
+
+            if ($varsession == null ){
+                echo '<li><a href="Sesion/login.html">Administracion</a></li>';
+            }else{
+              echo "<li> <a href='#'> <strong> Bienvenido $varsession </strong> </a> </li>";
+
+              echo "<li> <a href='Sesion/logica/salir.php'>   Cerrar Sesion </a> </li>";
+
+              // echo "<li> <a href='Sesion/mi_cuenta.php'> Mi cuenta </a> </li>";
+
+              // echo "<li> <a href='Sesion/registro.html'> Registrar Nuevo Adimistrador </a> </li>";
+            }
+
+            ?>      </ul>
 
       <ul>
         <li><a href="../carga de datos/upload_carrera_asign.php">Cargar Carreras/Asignaturas</a></li>
@@ -82,8 +98,12 @@ include "consultas.php";
                 <label for="nombre_plan">Nombre Plan:</label>
                 <select id="nombre_plan" name="nombre_plan">
                   <option value=""></option>
-                  <?php while ($rowlistaPlan = $resultListPlan->fetch_assoc()) : ?>
-                      <option value="<?php echo $rowlistaPlan["id_plan"]; ?>"><?php echo $rowlistaPlan["nombre_plan"];?></option>
+                  <?php 
+                    $consultPlan = "SELECT  DISTINCT nombre_plan  FROM plan_de_estudio";
+                    $resultPlan = $conn->query($consultPlan);
+
+                  while ($rowlistaPlan = $resultPlan->fetch_assoc()) : ?>
+                      <option value="<?php echo $rowlistaPlan["nombre_plan"]; ?>"><?php echo $rowlistaPlan["nombre_plan"];?></option>
                   <?php endwhile; ?>
                 </select>
               </article>
@@ -101,14 +121,14 @@ include "consultas.php";
         <select id="responsable" name="responsable">
           <option value=""></option>
 
-        <?php
-        // Consulta para obtener los datos de la tabla Programas
-        $consultResponsable = "SELECT * FROM Programas";
-        $resultResponsable = $conn->query($consultResponsable);
-      
-        while ($rowResponsable = $resultResponsable->fetch_assoc()) : ?>
-          <option value="<?php echo $rowResponsable["id_carrera"]; ?>"><?php echo $rowResponsable["responsable"];?></option>
-        <?php endwhile; ?>
+          <?php
+            // Consulta para obtener los datos de la tabla Programas
+            $consultProgramas = "SELECT  DISTINCT responsable  FROM Programas";
+            $resultProgramas = $conn->query($consultProgramas);
+          
+          while ($row = $resultProgramas->fetch_assoc()) : ?>
+            <option value="<?php echo $row["responsable"]; ?>"><?php echo $row["responsable"];?></option>
+          <?php endwhile; ?>
         </select>        
       <br>
       </div>
