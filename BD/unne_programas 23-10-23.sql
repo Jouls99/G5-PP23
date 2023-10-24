@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-10-2023 a las 05:23:44
+-- Tiempo de generación: 24-10-2023 a las 03:25:31
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -37,9 +37,9 @@ CREATE TABLE `asignaturas` (
 --
 
 INSERT INTO `asignaturas` (`id_asignatura`, `nom_asignatura`) VALUES
-(1, 'algebra'),
-(2, 'algebra I'),
-(3, 'algebra II');
+(1, 'Algebra'),
+(2, 'Algebra I'),
+(3, 'Algebra II');
 
 -- --------------------------------------------------------
 
@@ -80,11 +80,11 @@ CREATE TABLE `carreras` (
 --
 
 INSERT INTO `carreras` (`id_carrera`, `nombre_carrera`) VALUES
-(1, 'licenciatura en sistemas de informacion'),
-(2, 'licenciatura en sistemas'),
-(3, 'licenciatura en matematica'),
-(4, 'licenciatura en fisica'),
-(5, 'licenciatura en ciencias quimicas');
+(1, 'Licenciatura en Sistemas de Informacion'),
+(2, 'Licenciatura en Sistemas'),
+(3, 'Licenciatura en Matematica'),
+(4, 'Licenciatura en Fisica'),
+(5, 'Licenciatura en Ciencias Quimicas');
 
 -- --------------------------------------------------------
 
@@ -151,7 +151,7 @@ CREATE TABLE `programas` (
   `responsable` varchar(100) NOT NULL,
   `resolucion_CD` varchar(50) NOT NULL,
   `fecha_resolucion` date NOT NULL,
-  `nombre_documento` varchar(100) DEFAULT NULL,
+  `nombre_doc` varchar(100) DEFAULT NULL,
   `descripcion_doc` varchar(100) DEFAULT NULL,
   `archivo_PDF` longblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -160,8 +160,8 @@ CREATE TABLE `programas` (
 -- Volcado de datos para la tabla `programas`
 --
 
-INSERT INTO `programas` (`id_programa`, `nombre_programa`, `id_asignatura`, `id_carrera`, `id_plan`, `cuatrimestre`, `responsable`, `resolucion_CD`, `fecha_resolucion`, `nombre_documento`, `descripcion_doc`, `archivo_PDF`) VALUES
-(1, '', 1, 1, 1, 'primer', 'Torres German', '1196/2017', '0000-00-00', NULL, NULL, NULL),
+INSERT INTO `programas` (`id_programa`, `nombre_programa`, `id_asignatura`, `id_carrera`, `id_plan`, `cuatrimestre`, `responsable`, `resolucion_CD`, `fecha_resolucion`, `nombre_doc`, `descripcion_doc`, `archivo_PDF`) VALUES
+(1, '', 1, 1, 1, 'primer', 'Torres German', '1196/2017', '0000-00-00', '', '', 0x496e6963696f2e706466),
 (2, '', 2, 3, 4, 'primer', 'Mata Liliana', '0585/2012', '0000-00-00', NULL, NULL, NULL),
 (3, '', 2, 3, 4, 'primer', 'Mata Liliana', '0321/2000', '0000-00-00', NULL, NULL, NULL),
 (4, '', 3, 3, 4, 'primer', 'Caputo Liliana', '0076/2018', '0000-00-00', NULL, NULL, NULL);

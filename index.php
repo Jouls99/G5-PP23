@@ -137,9 +137,21 @@ include "logica/conexion.php";
                         while ($rowPlan = $resultPlan->fetch_assoc()) : ?>
                           <option value="<?php echo $rowPlan["id_plan"]; ?>"><?php echo $rowPlan["nombre_plan"];?></option>
                         <?php endwhile; ?>
+                        <!-- 
+                           <option value=""></option>
+                <?php 
+                $conPlan = "SELECT  DISTINCT nombre_plan  FROM plan_de_estudio";
+                $resuPlan = $conn->query($conPlan);
+
+                while ($rowlisPlan = $resuPlan->fetch_assoc()) : ?>
+                    <option value="<?php echo $rowlisPlan["nombre_plan"]; ?>"><?php echo $rowlisPlan["nombre_plan"];?></option>
+                <?php endwhile; ?>
+                         -->
                       </select>
                   </article>
+                  
                   <br>
+
                   <article>
                     <label for="asignatura">Asignatura:</label>
                     <select id="asignatura" name="buscarAsignatura">
@@ -154,10 +166,11 @@ include "logica/conexion.php";
                       <?php endwhile; ?>
                     </select>
                   </article>
+                  
                   <br>
+
                   <article>
                     <label for="responsable">Responsable:</label>
-
                     <select id="responsable" name="buscarResponsable">
                     <option value="0"></option>
 
@@ -187,7 +200,7 @@ include "logica/conexion.php";
               <article>
               <table border="1">
                     <tr>
-                        <th>ID Programa</th>
+                        <th>N° Programa</th>
                         <th>Asignatura</th>
                         <th>Carrera	</th>
                         <th>Plan</th>
@@ -195,7 +208,7 @@ include "logica/conexion.php";
                         <th>Responsable</th>
                         <th>Resolución CD</th>
                         <th>Fecha Resolución</th>
-                        <th>ID Documento</th>
+                        <th>Documento PDF</th>
                     </tr>
 
               <?php
@@ -238,7 +251,7 @@ include "logica/conexion.php";
                                       <td><?php echo $row["responsable"]; ?></td>
                                       <td><?php echo $row["resolucion_CD"]; ?></td>
                                       <td><?php echo $row["fecha_resolucion"]; ?></td>
-                                      <td><?php echo $row["id_documento"]; ?></td>
+                                      <td><?php echo $row["archivo_PDF"]; ?></td>
                                     </tr>
                                     <?php
                                   endwhile; 
@@ -280,7 +293,11 @@ include "logica/conexion.php";
                                 <td><?php echo $row["responsable"]; ?></td>
                                 <td><?php echo $row["resolucion_CD"]; ?></td>
                                 <td><?php echo $row["fecha_resolucion"]; ?></td>
-                                <td><?php echo $row["id_documento"]; ?></td>
+                                <td><a href="mostrarpdf.php
+                                ?id_programa=<?php echo $row["id_programa"];?> 
+                                &nom_asignatura=<?php echo $row["nom_asignatura"];?>
+                                &nombre_carrera=<?php echo $row["nombre_carrera"];?>
+                                ">ver documento</a></td>                                
                               </tr>
 
                               

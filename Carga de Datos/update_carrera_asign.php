@@ -30,21 +30,29 @@ include "header.php";
                 <center>
 
                     <!-- Tu primer formulario y contenido aquí -->
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form action="modify_carreras.php" method="post" enctype="multipart/form-data">
                     
                     <label for="carreras">Carreras:</label>
-                    <input type="text" id="carreras" name="carreras">
-
-                    <!-- <select id="carrera" name="carrera">
-                        <?php while ($rowlista = $resultlistcarrera->fetch_assoc()) : ?>
+                     <select id="carrera" name="idCarrera">
+                    <?php while ($rowlista = $resultlistcarrera->fetch_assoc()) : ?>
                           <option value="<?php echo $rowlista["id_carrera"]; ?>"><?php echo $rowlista["nombre_carrera"];?></option>
                         <?php endwhile; ?>
 
-                      </select>                   -->
-                      <br>
+                      </select>                   
+                    <input type="text" id="carreras" name="carrera" required>
 
-                    <input type="submit" value="Subir">
+                    
+                    <br>
+                    
+                    <!-- <label for="visible">visible:</label>
+                    <input type="checkbox" value="visible"> 
+                    <br>-->
+                    <input type="submit" value="Modificar">
+
+                    
                     </form>
+
+
 
                     <section class="Result-busqueda">
                         <article>
@@ -54,7 +62,7 @@ include "header.php";
                         <article>
                             <table border="1">
                             <tr>
-                                <th>ID Carrera</th>
+                                <th>N° Carrera</th>
                                 <th>Nombre Carrera</th>
                             </tr>
                             <?php while ($row = $resultcarrera->fetch_assoc()) : ?>
@@ -75,21 +83,28 @@ include "header.php";
                 <center>
 
                     <!-- Tu segundo formulario y contenido aquí -->
-                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <form action="modify_asignaturas.php" method="post" enctype="multipart/form-data">
                     
                     <label for="asignatura">Asignatura:</label>
-                    <input type="text" id="asignatura" name="asignatura">
-                    <!-- 
-                    <select id="asignatura" name="asignatura">
-                      <?php
+                    
+                    <select id="asignatura" name="idAsignatura">
+                    <?php
                         while ($row = $resultListAsig->fetch_assoc()) : ?>
                           <option value="<?php echo $row["id_asignatura"]; ?>"><?php echo $row["nom_asignatura"];?></option>
                       <?php endwhile; ?>
                     </select> 
-                    -->
+                    
+                    <input type="text" id="asignatura" name="asignatura" required>
+                    
                     <br>
 
-                    <input type="submit" value="Subir">
+                                        
+                    <!-- <label for="visible">visible:</label>
+                    <input type="checkbox" value="visible">
+                    <br> -->
+                    
+
+                    <input type="submit" value="Modificar">
                     </form>
 
        

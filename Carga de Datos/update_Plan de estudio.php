@@ -20,11 +20,23 @@ include "header.php";
 ?>
     
 
-    <form action="upload.php" method="post" enctype="multipart/form-data" class="formulario">
-    
+    <form action="modify_plan.php" method="post" enctype="multipart/form-data" class="formulario">
+    <div class="fila">
+        <label for="N_plan">Plan de Estudio Numero:</label>
+        <select id="id_plan" name="id_plan" required>
+                  <option value=""></option>
+                  <?php 
+                    $conPlan = "SELECT * FROM plan_de_estudio";
+                    $resuPlan = $conn->query($conPlan);
+
+                  while ($rowlisPlan = $resuPlan->fetch_assoc()) : ?>
+                      <option value="<?php echo $rowlisPlan["id_plan"]; ?>"><?php echo $rowlisPlan["id_plan"];?></option>
+                  <?php endwhile; ?>
+                </select>
+    </div>
     <div class="fila">
         <label for="plan_de_estudio">Nombre Plan de Estudio:</label>
-        <input type="text" id="plan_de_estudio" name="nombre_plan" list="opciones_plan">
+        <input type="text" id="plan_de_estudio" name="nombre_plan" list="opciones_plan" required>
         <datalist id="opciones_plan">
         <option value=""></option>
         <?php
@@ -43,7 +55,6 @@ include "header.php";
         <!-- <input type="text" id="nombre_carrera" name="nombre_carrera"> -->
             <select id="nombre_carrera" name="nombre_carrera" required>
                 <option value=""></option>
-
                 <?php while ($rowlistanombre = $resultlistcarrera->fetch_assoc()) : ?>
                     <option value="<?php echo $rowlistanombre["id_carrera"]; ?>"><?php echo $rowlistanombre["nombre_carrera"];?></option>
                 <?php endwhile; ?>
@@ -51,6 +62,7 @@ include "header.php";
         
         <label for="fecha_inicio">Fecha Inicio:</label>
         <input type="date" id="fecha_inicio" name="fecha_inicio">
+
         <label for="fecha_fin">Fecha Fin:</label>
         <input type="date" id="fecha_fin" name="fecha_fin">
     </div>
@@ -58,17 +70,27 @@ include "header.php";
     <div class="fila">
         <label for="res_cd">Resolucion CD:</label>
         <input type="text" id="res_cd" name="res_cd">
+
         <label for="res_sd">Resolucion SD:</label>
         <input type="text" id="res_sd" name="res_sd">
+
         <label for="res_coneau">Resolucion CONEAU:</label>
         <input type="text" id="res_coneau" name="res_coneau">
+
         <label for="res_modif">Resolucion Modificada:</label>
         <input type="text" id="res_modif" name="res_modif">
     </div>
+    <!-- <div >
+           
+        <label for="visible">visible:</label>
+        <input type="checkbox" value="visible">
+        <br>
+        
+    </div> -->
 
     <div class="fila">
         <div class="boton-container">
-            <input type="submit" value="Subir" class="boton">
+            <input type="submit" value="Modificar" class="boton">
         </div>
     </div>
 
