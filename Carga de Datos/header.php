@@ -30,12 +30,10 @@
 
     <center>
 
-
-    <nav>
+    <nav class="menu">
       <ul>
           <li><a href="../index.php">Inicio</a></li>
           <!-- <li><a href="#">Estadistica</a></li> -->
-          <li><a href="https://exa.unne.edu.ar/r/">FaCENA</a></li>
 
           <?php
             // session_start();
